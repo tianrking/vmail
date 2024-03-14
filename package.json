@@ -10,6 +10,7 @@
     "worker:dev": "pnpm -F email-worker run dev",
     "remix:build": "pnpm -F remix run build",
     "remix:start": "pnpm -F remix run start",
+    "next:build": "pnpm -F next run build",
     "format": "prettier --write ."
   },
   "keywords": [],

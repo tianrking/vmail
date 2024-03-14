@@ -30,7 +30,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const siteKey = process.env.TURNSTILE_KEY || "1x00000000000000000000AA";
   const userMailbox =
     ((await userMailboxCookie.parse(
-      request.headers.get("Cookie"),
+      request.headers.get("Cookie")
     )) as string) || undefined;
   if (!userMailbox) {
     return {
@@ -41,7 +41,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
   const db = getWebTursoDB(
     process.env.TURSO_DB_URL as string,
-    process.env.TURSO_DB_RO_AUTH_TOKEN as string,
+    process.env.TURSO_DB_RO_AUTH_TOKEN as string
   );
   const mails = await getEmailsByMessageTo(db, userMailbox);
   return {
@@ -79,7 +79,7 @@ export const action: ActionFunction = async ({ request }) => {
     };
   }
 
-  const domain = "smail.pw";
+  const domain = "vmail.dev";
   const mailbox = `${randomName("", ".")}@${domain}`;
   const userMailbox = await userMailboxCookie.serialize(mailbox);
   return redirect("/", {
@@ -121,8 +121,7 @@ export default function Index() {
             <button
               type="submit"
               disabled={navigation.state != "idle"}
-              className="p-4 rounded-md w-full bg-blue-500 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500"
-            >
+              className="p-4 rounded-md w-full bg-blue-500 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
               Submit
             </button>
           </Form>

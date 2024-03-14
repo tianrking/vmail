@@ -23,7 +23,7 @@ export async function fetchMailbox(data: FormData) {
     const res = await fetch(verifyEndpoint, {
       method: "POST",
       body: `secret=${encodeURIComponent(
-        turnstileSecret,
+        turnstileSecret
       )}&response=${encodeURIComponent(token)}`,
       headers: {
         "content-type": "application/x-www-form-urlencoded",
@@ -38,7 +38,7 @@ export async function fetchMailbox(data: FormData) {
     }
 
     const name = randomName("", ".");
-    const domain = "smail.pw";
+    const domain = "vmail.dev";
     const mailbox = `${name}@${domain}`;
 
     const secret = process.env.COOKIES_SECRET as string;

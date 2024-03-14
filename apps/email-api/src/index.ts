@@ -57,12 +57,12 @@ async function withTurnstile(c: Context, next: Next) {
       {
         method: "POST",
         body: `secret=${encodeURIComponent(
-          c.env.TURNSTILE_SECRET,
+          c.env.TURNSTILE_SECRET
         )}&response=${encodeURIComponent(token)}`,
         headers: {
           "content-type": "application/x-www-form-urlencoded",
         },
-      },
+      }
     );
     if (!res.ok) {
       return c.json({ error: "Failed to verify" }, 400);
@@ -80,7 +80,7 @@ async function withTurnstile(c: Context, next: Next) {
 app.post("/mailbox", withTurnstile, async (c) => {
   const jwtSecret = new TextEncoder().encode(c.env.JWT_SECRET);
   const name = randomName("", ".");
-  const domain = "smail.pw";
+  const domain = "vmail.dev";
   const mailbox = `${name}@${domain}`;
   const token = await new jose.SignJWT({ mailbox })
     .setProtectedHeader({ alg: "HS256" })
