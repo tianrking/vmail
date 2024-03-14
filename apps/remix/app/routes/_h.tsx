@@ -7,7 +7,7 @@ export default function HomeLayout() {
     <div className="mx-auto max-w-2xl gap-2 h-dvh p-2 flex flex-col">
       <Header />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
