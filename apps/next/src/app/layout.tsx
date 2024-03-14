@@ -6,8 +6,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Smail",
-  description: "Smail is a temporary email service",
+  title: "Vmail",
+  description: "Vmail is a temporary email service",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -21,8 +21,8 @@ import { userMailboxCookie } from "../cookies.server";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Smail" },
-    { name: "description", content: "Welcome to Smail!" },
+    { title: "Vmail" },
+    { name: "description", content: "Welcome to Vmail!" },
   ];
 };
 
