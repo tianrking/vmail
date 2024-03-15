@@ -18,11 +18,19 @@ import { getWebTursoDB } from "database/db";
 import CopyButton from "../components/CopyButton";
 import MailListWithQuery from "../components/MailList";
 import { userMailboxCookie } from "../cookies.server";
+import ShieldCheck from "~/components/icons/ShieldCheck";
+import Cloudflare from "~/components/icons/Cloudflare";
+import Clock from "~/components/icons/Clock";
+import Info from "~/components/icons/Info";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Vmail" },
-    { name: "description", content: "Welcome to Vmail!" },
+    { title: "Vmail - Virtual Temporary Email" },
+    {
+      name: "description",
+      content:
+        "Virtual temporary Email. Privacy friendly, Valid for 1 day, AD friendly, 100% Run on Cloudflare",
+    },
   ];
 };
 
@@ -95,49 +103,93 @@ export default function Index() {
 
   const navigation = useNavigation();
 
+  const handleStop = async () => {
+    await fetch("/", {
+      method: "GET",
+      headers: {
+        "Set-Cookie": "userMailbox=; Max-Age=0",
+      },
+    });
+  };
+
   return (
-    <>
-      <div className="flex flex-col md:p-4 font-semibold items-center max-w-md w-full mx-auto gap-2 p-2 rounded-md border-2 border-dashed">
-        <h1 className="font-semibold">
-          Your<span className="text-blue-500 mx-1">Temporary</span>
-          Email Address
-        </h1>
-        {loaderData?.userMailbox ? (
-          <div className="flex items-center text-zinc-800 bg-zinc-100 px-4 p-2 rounded-md w-full">
-            <span>{loaderData.userMailbox}</span>
-            <CopyButton
-              content={loaderData.userMailbox}
-              className="p-1 rounded-md border ml-auto"
-            />
+    <div className="flex flex-col gap-4 md:flex-row justify-center items-start mt-28 mx-6 md:mx-10">
+      <div className="flex flex-col text-white items-start w-full md:w-[350px] mx-auto gap-2">
+        <div className="w-full mb-6 md:max-w-[350px] group group-hover:before:duration-500 group-hover:after:duration-500 after:duration-500 hover:border-cyan-600 hover:before:[box-shadow:_20px_20px_20px_30px_#a21caf] duration-500 before:duration-500 hover:duration-500 hover:after:-right-8 hover:before:right-12 hover:before:-bottom-8 hover:before:blur origin-left hover:decoration-2 relative bg-neutral-800 h-full border text-left p-4 rounded-lg overflow-hidden border-cyan-50/20 before:absolute before:w-12 before:h-12 before:content[''] before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg  after:absolute after:z-10 after:w-20 after:h-20 after:content['']  after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg">
+          <h1 className="text-gray-50 text-xl font-bold mb-7 group-hover:text-cyan-500 duration-500">
+            Virtual Temporary Email
+          </h1>
+          <div className="flex flex-col gap-4 text-sm text-gray-200">
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck /> Privacy friendly
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock />
+              Valid for 1 Day
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Info />
+              AD friendly
+            </div>
+            <div className="flex items-center gap-2">
+              <Cloudflare />
+              100% Run on Cloudflare
+            </div>
           </div>
-        ) : (
-          <Form method="POST" className="flex flex-col gap-2">
-            <Turnstile
-              siteKey={loaderData.siteKey}
-              options={{
-                theme: "light",
-              }}
-            />
+        </div>
+
+        {loaderData?.userMailbox && (
+          <div className="w-full md:max-w-[350px] mb-4">
+            <div className="mb-4 font-semibold text-sm">Your Email</div>
+            <div className="flex items-center mb-6 text-zinc-100 bg-white/10 backdrop-blur-xl shadow-inner px-4 py-4 rounded-md w-full">
+              <span className="truncate">
+                {loaderData.userMailbox}lucid.roentgen@vmail.dev
+              </span>
+              <CopyButton
+                content={loaderData.userMailbox}
+                className="p-1 rounded-md ml-auto transition-all duration-200"
+              />
+            </div>
+            <button
+              onClick={handleStop}
+              className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
+              Stop
+            </button>
+          </div>
+        )}
+
+        {!loaderData?.userMailbox && (
+          <Form method="POST" className="w-full md:max-w-[350px]">
+            <div className="text-sm relative mb-6">
+              <div className="mb-4 font-semibold">Validater</div>
+              <div className="[&amp;_iframe]:!w-full h-[65px] max-w-[300px] bg-gray-700">
+                <Turnstile
+                  className="z-10 border-none"
+                  siteKey={loaderData.siteKey}
+                  options={{
+                    theme: "dark",
+                  }}
+                />
+              </div>
+            </div>
             <button
               type="submit"
               disabled={navigation.state != "idle"}
-              className="p-4 rounded-md w-full bg-blue-500 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
-              Submit
+              className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
+              Start
             </button>
           </Form>
         )}
+        <div>
+          {actionData?.error && (
+            <div className="text-red-500">{actionData.error}</div>
+          )}
+        </div>
       </div>
-      <h2 className="text-zinc-600 text-xs md:p-2 md:text-sm">
-        Forget about spam, advertising mailings, hacking and attacking robots.
-        Keep your real mailbox clean and secure. Temp Mail provides temporary,
-        secure, anonymous, free, disposable email address.
-      </h2>
-      <MailListWithQuery mails={loaderData.mails} />
-      <div>
-        {actionData?.error && (
-          <div className="text-red-500">{actionData.error}</div>
-        )}
+
+      <div className="w-full flex-1">
+        <MailListWithQuery mails={loaderData.mails} />
       </div>
-    </>
+    </div>
   );
 }

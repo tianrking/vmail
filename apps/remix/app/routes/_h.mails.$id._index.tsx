@@ -9,7 +9,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   const id = params.id;
   const db = getWebTursoDB(
     process.env.TURSO_DB_URL as string,
-    process.env.TURSO_DB_RO_AUTH_TOKEN as string,
+    process.env.TURSO_DB_RO_AUTH_TOKEN as string
   );
   if (!id) {
     throw new Error("No mail id provided");
@@ -24,11 +24,10 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function MailViewer() {
   const mail = useLoaderData<typeof loader>();
   return (
-    <div className="flex flex-1 flex-col p-2 gap-10">
+    <div className="flex flex-1 flex-col p-2 gap-10 text-white">
       <Link
         to="/"
-        className="flex w-fit font-semibold items-center border p-2 rounded-md gap-2"
-      >
+        className="flex w-fit font-semibold items-center border p-2 rounded-md gap-2">
         <ArrowUturnLeft />
         Back Home
       </Link>
@@ -67,8 +66,7 @@ export function ErrorBoundary() {
     <div className="flex flex-1 flex-col gap-10">
       <Link
         to="/"
-        className="flex w-fit font-semibold items-center border p-2 rounded-md gap-2"
-      >
+        className="flex w-fit font-semibold items-center border p-2 rounded-md gap-2">
         <ArrowUturnLeft />
         Back Home
       </Link>

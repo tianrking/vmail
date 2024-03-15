@@ -1,18 +1,43 @@
+import { Link } from "@remix-run/react";
+import Twitter from "./icons/Twitter";
+import Github from "./icons/GitHub";
+import { MailIcon } from "icons";
+
 export default function Footer() {
   return (
-    <div className="flex items-center justify-center text-sm font-zinc-700">
-      Made with ❤️ by
+    <div className="text-white w-full flex flex-col items-center justify-between py-4 px-5 mt-16 md:px-10 mx-auto sm:flex-row">
+      <a href="/" className="text-xl font-black leading-none select-none logo">
+        Vmail.DEV
+      </a>
       <a
-        href="https://github.com/akazwz"
-        className="m-1 underline"
-        target="_blank"
-      >
-        akazwz
+        className="mt-4 text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0"
+        href="https://github.com/yesmore"
+        target="_blank">
+        {" "}
+        © 2024 Products of Yesmore{" "}
       </a>
-      Inspired by{" "}
-      <a href="https://email.ml" className="m-1 underline" target="_blank">
-        Email.ML
-      </a>
+      <div className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
+        <Link
+          to="mailto:team@inke.app"
+          title="Email"
+          className="text-gray-400 hover:text-gray-500">
+          <MailIcon className="w-6 h-6" />
+        </Link>
+        <Link
+          to="https://twitter.com/yesmoree"
+          target="_blank"
+          title="Twitter"
+          className="text-gray-400 hover:text-gray-500">
+          <Twitter />
+        </Link>
+        <Link
+          to="https://github.com/yesmore"
+          target="_blank"
+          title="GitHub"
+          className="text-gray-400 hover:text-gray-500">
+          <Github />
+        </Link>
+      </div>
     </div>
   );
 }

@@ -9,7 +9,8 @@ CREATE TABLE `emails` (
 	`delivered_to` text,
 	`return_path` text,
 	`to` text,
-
+	`cc` text,
+	`bcc` text,
 	`subject` text,
 	`message_id` text NOT NULL,
 	`in_reply_to` text,

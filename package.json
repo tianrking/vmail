@@ -9,6 +9,7 @@
   "scripts": {
     "worker:dev": "pnpm -F email-worker run dev",
     "remix:build": "pnpm -F remix run build",
+    "remix:dev": "pnpm -F remix run dev",
     "remix:start": "pnpm -F remix run start",
     "next:build": "pnpm -F next run build",
     "format": "prettier --write ."

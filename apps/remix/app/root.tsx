@@ -12,6 +12,7 @@ import stylesheet from "./tailwind.css";
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
+
 export default function App() {
   return (
     <html lang="en">
@@ -20,8 +21,20 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-39WSEGK1FQ"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-39WSEGK1FQ');
+            `,
+          }}></script>
       </head>
-      <body>
+      <body className="bg-[#1f2023]">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
