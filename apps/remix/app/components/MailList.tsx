@@ -63,8 +63,11 @@ export function MailList(props: { mails: Email[] }) {
       <div className="rounded-md border border-cyan-50/20">
         <div className="w-full rounded-t-md p-2 flex items-center bg-zinc-800 text-zinc-200 gap-2">
           <MailIcon className="size-6" />
-          <div className="font-bold text-sm h-5">
-            Email List {data.length > 0 && <span>({data.length})</span>}
+          <div className="flex items-center font-bold text-lg font-mono">
+            INBOX
+            <span className="ml-1 text-base">
+              {data.length > 0 && <span>({data.length})</span>}
+            </span>
           </div>
           <button
             className="rounded ml-auto p-1"

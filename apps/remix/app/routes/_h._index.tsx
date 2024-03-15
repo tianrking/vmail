@@ -146,7 +146,7 @@ export default function Index() {
 
         {loaderData?.userMailbox && (
           <Form method="POST" className="w-full md:max-w-[350px] mb-4">
-            <div className="mb-4 font-semibold text-sm">Your Email</div>
+            <div className="mb-4 font-semibold text-sm">Email address</div>
             <div className="flex items-center mb-6 text-zinc-100 bg-white/10 backdrop-blur-xl shadow-inner px-4 py-4 rounded-md w-full">
               <span className="truncate">{loaderData.userMailbox}</span>
               <CopyButton
@@ -180,7 +180,7 @@ export default function Index() {
               type="submit"
               disabled={navigation.state != "idle"}
               className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
-              Start
+              Create temporary email
             </button>
           </Form>
         )}
