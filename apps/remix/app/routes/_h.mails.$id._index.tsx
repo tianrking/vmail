@@ -1,9 +1,20 @@
-import { type LoaderFunction } from "@remix-run/node";
+import { MetaFunction, type LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData, useRouteError } from "@remix-run/react";
 import { getEmail } from "database/dao";
 import { getWebTursoDB } from "database/db";
 import { format } from "date-fns/format";
 import { ArrowUturnLeft, UserCircleIcon } from "icons";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Detail" },
+    {
+      name: "description",
+      content:
+        "Virtual temporary Email. Privacy friendly, Valid for 1 day, AD friendly, 100% Run on Cloudflare",
+    },
+  ];
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   const id = params.id;

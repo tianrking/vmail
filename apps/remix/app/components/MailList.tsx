@@ -74,15 +74,13 @@ export function MailList(props: { mails: Email[] }) {
               })
             }>
             {data.length === 0 && <Lock className="size-6 " />}
-            {data.length > 0 && (
-              <Refresh className={`size-6 ${isFetching && "animate-spin"}`} />
-            )}
+            {data.length > 0 && <Refresh className={`size-6 animate-spin`} />}
           </button>
         </div>
 
-        <div className="grids flex flex-col flex-1 max-h-[418px] overflow-y-auto p-2">
+        <div className="grids flex flex-col flex-1 h-[418px] overflow-y-auto p-2">
           {data.length === 0 && (
-            <div className="w-full items-center min-h-[460px] flex-col justify-center flex">
+            <div className="w-full items-center h-[418px] flex-col justify-center flex">
               <Loader />
               <p className="text-zinc-400 mt-6">Waiting for emails...</p>
             </div>

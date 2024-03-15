@@ -60,6 +60,21 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  const IuserMailbox =
+    ((await userMailboxCookie.parse(
+      request.headers.get("Cookie")
+    )) as string) || undefined;
+
+  if (!IuserMailbox) {
+    return redirect("/", {
+      headers: {
+        "Set-Cookie": await userMailboxCookie.serialize("", {
+          maxAge: 1,
+        }),
+      },
+    });
+  }
+
   const response = (await request.formData()).get("cf-turnstile-response");
   if (!response) {
     return {
@@ -103,11 +118,6 @@ export default function Index() {
 
   const navigation = useNavigation();
 
-  const handleStop = async () => {
-    document.cookie =
-      "userMailbox=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  };
-
   return (
     <div className=" flex flex-col gap-4 md:flex-row justify-center items-start mt-28 mx-6 md:mx-10">
       <div className="flex flex-col text-white items-start w-full md:w-[350px] mx-auto gap-2">
@@ -135,7 +145,7 @@ export default function Index() {
         </div>
 
         {loaderData?.userMailbox && (
-          <div className="w-full md:max-w-[350px] mb-4">
+          <Form method="POST" className="w-full md:max-w-[350px] mb-4">
             <div className="mb-4 font-semibold text-sm">Your Email</div>
             <div className="flex items-center mb-6 text-zinc-100 bg-white/10 backdrop-blur-xl shadow-inner px-4 py-4 rounded-md w-full">
               <span className="truncate">{loaderData.userMailbox}</span>
@@ -145,11 +155,11 @@ export default function Index() {
               />
             </div>
             <button
-              onClick={handleStop}
+              type="submit"
               className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
               Stop
             </button>
-          </div>
+          </Form>
         )}
 
         {!loaderData?.userMailbox && (
