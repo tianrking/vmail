@@ -27,7 +27,7 @@ export default function CopyButton(props: CopyButtonProps) {
   }
 
   return (
-    <button {...props} onClick={copy}>
+    <button type="button" {...props} onClick={copy}>
       {icons[status]}
     </button>
   );
