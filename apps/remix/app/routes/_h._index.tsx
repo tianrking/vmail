@@ -65,7 +65,7 @@ export const action: ActionFunction = async ({ request }) => {
       request.headers.get("Cookie")
     )) as string) || undefined;
 
-  if (!IuserMailbox) {
+  if (IuserMailbox) {
     return redirect("/", {
       headers: {
         "Set-Cookie": await userMailboxCookie.serialize("", {
