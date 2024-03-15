@@ -11,10 +11,10 @@ export default function Footer() {
       </a>
       <a
         className="mt-4 text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0"
-        href="https://github.com/yesmore"
+        href="https://vmail.dev"
         target="_blank">
         {" "}
-        © 2024 Products of Yesmore{" "}
+        © 2024 Products of Vmail.DEV{" "}
       </a>
       <div className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
         <Link
@@ -31,7 +31,7 @@ export default function Footer() {
           <Twitter />
         </Link>
         <Link
-          to="https://github.com/yesmore"
+          to="https://github.com/yesmore/vmail"
           target="_blank"
           title="GitHub"
           className="text-gray-400 hover:text-gray-500">

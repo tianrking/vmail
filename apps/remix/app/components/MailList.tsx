@@ -63,7 +63,9 @@ export function MailList(props: { mails: Email[] }) {
       <div className="rounded-md border border-cyan-50/20">
         <div className="w-full rounded-t-md p-2 flex items-center bg-zinc-800 text-zinc-200 gap-2">
           <MailIcon className="size-6" />
-          <p className="font-bold text-sm h-5">Mail List</p>
+          <div className="font-bold text-sm h-5">
+            Email List {data.length > 0 && <span>({data.length})</span>}
+          </div>
           <button
             className="rounded ml-auto p-1"
             onClick={() =>
@@ -78,7 +80,7 @@ export function MailList(props: { mails: Email[] }) {
           </button>
         </div>
 
-        <div className="flex flex-col flex-1 max-h-[418px] overflow-y-auto p-2">
+        <div className="grids flex flex-col flex-1 max-h-[418px] overflow-y-auto p-2">
           {data.length === 0 && (
             <div className="w-full items-center min-h-[460px] flex-col justify-center flex">
               <Loader />

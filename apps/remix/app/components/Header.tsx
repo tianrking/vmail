@@ -18,8 +18,10 @@ export default function Header() {
       <Link to="/privacy" className="ml-3 md:ml-8 text-sm md:text-base">
         Privacy
       </Link>
-      <Link to="/terms" className="ml-3 md:ml-8 text-sm md:text-base">
-        Terms
+      <Link to="https://www.buymeacoffee.com/yesmore" target="_blank">
+        <button className="py-1.5 px-3 md:px-5 ml-3 md:ml-8 text-sm md:text-base rounded-md bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
+          Donate
+        </button>
       </Link>
     </div>
   );
