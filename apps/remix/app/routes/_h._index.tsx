@@ -119,7 +119,7 @@ export default function Index() {
   const navigation = useNavigation();
 
   return (
-    <div className=" flex flex-col gap-4 md:flex-row justify-center items-start mt-28 mx-6 md:mx-10">
+    <div className="h-full flex flex-col gap-4 md:flex-row justify-center items-start mt-28 mx-6 md:mx-10">
       <div className="flex flex-col text-white items-start w-full md:w-[350px] mx-auto gap-2">
         <div className="w-full mb-6 md:max-w-[350px] group group-hover:before:duration-500 group-hover:after:duration-500 after:duration-500 hover:border-cyan-600 hover:before:[box-shadow:_20px_20px_20px_30px_#a21caf] duration-500 before:duration-500 hover:duration-500 hover:after:-right-8 hover:before:right-12 hover:before:-bottom-8 hover:before:blur origin-left hover:decoration-2 relative bg-neutral-800 h-full border text-left p-4 rounded-lg overflow-hidden border-cyan-50/20 before:absolute before:w-12 before:h-12 before:content[''] before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg  after:absolute after:z-10 after:w-20 after:h-20 after:content['']  after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg">
           <h1 className="text-gray-50 text-xl font-bold mb-7 group-hover:text-cyan-500 duration-500">

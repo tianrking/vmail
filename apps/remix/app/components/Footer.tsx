@@ -5,7 +5,7 @@ import { MailIcon } from "icons";
 
 export default function Footer() {
   return (
-    <div className="text-white w-full flex flex-col items-center justify-between py-4 px-5 mt-16 md:px-10 mx-auto sm:flex-row">
+    <div className="text-white w-full mt-auto flex flex-col items-center justify-between px-5 pt-16 mb-10 md:px-10 mx-auto sm:flex-row">
       <a href="/" className="text-xl font-black leading-none select-none logo">
         Vmail.DEV
       </a>
@@ -14,7 +14,7 @@ export default function Footer() {
         href="https://vmail.dev"
         target="_blank">
         {" "}
-        © 2024 Products of Vmail.DEV{" "}
+        © 2024 Products of Yesmore{" "}
       </a>
       <div className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
         <Link

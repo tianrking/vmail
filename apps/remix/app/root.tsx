@@ -34,7 +34,7 @@ export default function App() {
             `,
           }}></script>
       </head>
-      <body className="bg-[#1f2023]">
+      <body className="">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
