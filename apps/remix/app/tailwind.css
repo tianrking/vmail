@@ -55,7 +55,6 @@
   cursor: pointer;
   transition: var(--btn-transition);
   overflow: hidden;
-  box-shadow: var(--btn-shadow);
 }
 
 .cool-btn span {
