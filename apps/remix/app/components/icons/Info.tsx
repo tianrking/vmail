@@ -9,7 +9,7 @@ export default function Info(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 26 26">
       <g
         fill="none"
-        stroke="#65a30d"
+        stroke="#0891b2"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2">

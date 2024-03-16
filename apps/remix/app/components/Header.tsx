@@ -4,7 +4,7 @@ import { VmailLogo } from "./icons/vmail";
 
 export default function Header() {
   return (
-    <div className="fixed top-0 z-10 h-20 w-full px-5 backdrop-blur-xl md:px-10 text-white flex items-center justify-between first-letter:shadow-sm">
+    <div className="fixed top-0 z-20 h-20 w-full px-5 backdrop-blur-xl md:px-10 text-white flex items-center justify-between first-letter:shadow-sm">
       <Link to="/" className="font-bold flex items-center justify-center gap-3">
         <VmailLogo />
         <button className="cool-btn">
