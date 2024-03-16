@@ -11,6 +11,8 @@ import Refresh from "./icons/Refresh";
 import Lock from "./icons/Lock";
 import Loader from "./icons/Loader";
 
+import { useTranslation } from "react-i18next";
+
 const queryClient = new QueryClient();
 
 export function MailItem({ mail: item }: { mail: Email }) {
@@ -51,6 +53,8 @@ async function fetchMails() {
 }
 
 export function MailList(props: { mails: Email[] }) {
+  const { t } = useTranslation();
+
   const { data, isFetching } = useQuery({
     queryKey: ["mails"],
     queryFn: fetchMails,
@@ -85,7 +89,7 @@ export function MailList(props: { mails: Email[] }) {
           {data.length === 0 && (
             <div className="w-full items-center h-[418px] flex-col justify-center flex">
               <Loader />
-              <p className="text-zinc-400 mt-6">Waiting for emails...</p>
+              <p className="text-zinc-400 mt-6">{t("Waiting for emails...")}</p>
             </div>
           )}
 

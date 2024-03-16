@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -168,6 +164,18 @@ importers:
       database:
         specifier: workspace:^
         version: link:../../packages/database
+      i18next:
+        specifier: ^23.10.1
+        version: 23.10.1
+      i18next-browser-languagedetector:
+        specifier: ^7.2.0
+        version: 7.2.0
+      i18next-fs-backend:
+        specifier: ^2.3.1
+        version: 2.3.1
+      i18next-http-backend:
+        specifier: ^2.5.0
+        version: 2.5.0
       icons:
         specifier: workspace:^
         version: link:../../packages/icons
@@ -180,6 +188,12 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-i18next:
+        specifier: ^14.1.0
+        version: 14.1.0(i18next@23.10.1)(react-dom@18.2.0)(react@18.2.0)
+      remix-i18next:
+        specifier: ^6.0.1
+        version: 6.0.1(@remix-run/cloudflare@2.5.0)(@remix-run/node@2.5.0)(@remix-run/react@2.5.0)(i18next@23.10.1)(react-i18next@14.1.0)(react@18.2.0)
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.5.0
@@ -577,7 +591,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
-    dev: true
+
+  /@babel/runtime@7.24.0:
+    resolution: {integrity: sha512-Chk32uHMg6TnQdvw2e9IlqPpFX/6NLuK0Ys2PqLb7/gL5uFn9mXvK715FGLlOLQrcO4qIkNHkvPGktzzXexsFw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -1811,6 +1830,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: false
     optional: true
@@ -1820,6 +1840,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: false
     optional: true
@@ -1829,6 +1850,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: false
     optional: true
@@ -1838,6 +1860,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: false
     optional: true
@@ -2536,6 +2559,10 @@ packages:
     dependencies:
       event-target-shim: 5.0.1
 
+  /accept-language-parser@1.5.0:
+    resolution: {integrity: sha512-QhyTbMLYo0BBGg1aWbeMG4ekWtds/31BrEU+DONOg/7ax23vxpL03Pb7/zBmha2v7vdD3AyzZVWBVGEZxKOXWw==}
+    dev: false
+
   /accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
     engines: {node: '>= 0.6'}
@@ -3153,6 +3180,14 @@ packages:
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
+
+  /cross-fetch@4.0.0:
+    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -4680,6 +4715,12 @@ packages:
       lru-cache: 7.18.3
     dev: true
 
+  /html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+    dependencies:
+      void-elements: 3.1.0
+    dev: false
+
   /http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
@@ -4694,6 +4735,30 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
     dev: true
+
+  /i18next-browser-languagedetector@7.2.0:
+    resolution: {integrity: sha512-U00DbDtFIYD3wkWsr2aVGfXGAj2TgnELzOX9qv8bT0aJtvPV9CRO77h+vgmHFBMe7LAxdwvT/7VkCWGya6L3tA==}
+    dependencies:
+      '@babel/runtime': 7.23.8
+    dev: false
+
+  /i18next-fs-backend@2.3.1:
+    resolution: {integrity: sha512-tvfXskmG/9o+TJ5Fxu54sSO5OkY6d+uMn+K6JiUGLJrwxAVfer+8V3nU8jq3ts9Pe5lXJv4b1N7foIjJ8Iy2Gg==}
+    dev: false
+
+  /i18next-http-backend@2.5.0:
+    resolution: {integrity: sha512-Z/aQsGZk1gSxt2/DztXk92DuDD20J+rNudT7ZCdTrNOiK8uQppfvdjq9+DFQfpAnFPn3VZS+KQIr1S/W1KxhpQ==}
+    dependencies:
+      cross-fetch: 4.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /i18next@23.10.1:
+    resolution: {integrity: sha512-NDiIzFbcs3O9PXpfhkjyf7WdqFn5Vq6mhzhtkXzj51aOcNuPNcTwuYNuXCpHsanZGHlHKL35G7huoFeVic1hng==}
+    dependencies:
+      '@babel/runtime': 7.23.8
+    dev: false
 
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -4759,6 +4824,11 @@ packages:
       hasown: 2.0.0
       side-channel: 1.0.4
     dev: true
+
+  /intl-parse-accept-language@1.0.0:
+    resolution: {integrity: sha512-YFMSV91JNBOSjw1cOfw2tup6hDP7mkz+2AUV7W1L1AM6ntgI75qC1ZeFpjPGMrWp+upmBRTX2fJWQ8c7jsUWpA==}
+    engines: {node: '>=14'}
+    dev: false
 
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
@@ -5435,7 +5505,7 @@ packages:
   /media-query-parser@2.0.2:
     resolution: {integrity: sha512-1N4qp+jE0pL5Xv4uEcwVUhIkwdUO3S/9gML90nqKA7v7FcOS5vUtatfzok9S9U1EJU8dHWlcv95WLnKmmxZI9w==}
     dependencies:
-      '@babel/runtime': 7.23.8
+      '@babel/runtime': 7.24.0
     dev: true
 
   /media-typer@0.3.0:
@@ -6722,6 +6792,26 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-i18next@14.1.0(i18next@23.10.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3KwX6LHpbvGQ+sBEntjV4sYW3Zovjjl3fpoHbUwSgFHf0uRBcbeCBLR5al6ikncI5+W0EFb71QXZmfop+J6NrQ==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.24.0
+      html-parse-stringify: 3.0.1
+      i18next: 23.10.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
@@ -6808,7 +6898,6 @@ packages:
 
   /regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-    dev: true
 
   /regexp.prototype.flags@1.5.1:
     resolution: {integrity: sha512-sy6TXMN+hnP/wMy+ISxg3krXx7BAtWVO4UouuCN/ziM9UEne0euamVNafDfvC83bRNr95y0V5iijeDQFUNpvrg==}
@@ -6865,6 +6954,35 @@ packages:
       mdast-util-to-hast: 12.3.0
       unified: 10.1.2
     dev: true
+
+  /remix-i18next@6.0.1(@remix-run/cloudflare@2.5.0)(@remix-run/node@2.5.0)(@remix-run/react@2.5.0)(i18next@23.10.1)(react-i18next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-zO7sYe/Ui4s/ZGHMZoScFUNsuarykzQsQ9AB3KPswb7lLahwqIu+K09XFNZBUGBOPHOUl9txv0+2vOrIiGCSPA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@remix-run/cloudflare': ^2.0.0
+      '@remix-run/deno': ^2.0.0
+      '@remix-run/node': ^2.0.0
+      '@remix-run/react': ^2.0.0
+      i18next: ^23.1.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-i18next: ^13.0.0 || ^14.0.0
+    peerDependenciesMeta:
+      '@remix-run/cloudflare':
+        optional: true
+      '@remix-run/deno':
+        optional: true
+      '@remix-run/node':
+        optional: true
+    dependencies:
+      '@remix-run/cloudflare': 2.5.0(@cloudflare/workers-types@4.20231218.0)(typescript@5.3.3)
+      '@remix-run/node': 2.5.0(typescript@5.3.3)
+      '@remix-run/react': 2.5.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
+      accept-language-parser: 1.5.0
+      i18next: 23.10.1
+      intl-parse-accept-language: 1.0.0
+      react: 18.2.0
+      react-i18next: 14.1.0(i18next@23.10.1)(react-dom@18.2.0)(react@18.2.0)
+    dev: false
 
   /require-like@0.1.2:
     resolution: {integrity: sha512-oyrU88skkMtDdauHDuKVrgR+zuItqr6/c//FXzvmxRGMexSDc6hNvJInGW3LL46n+8b50RykrvwSUIIQH2LQ5A==}
@@ -7853,6 +7971,11 @@ packages:
       fsevents: 2.3.3
     dev: true
 
+  /void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /watchpack@2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}
     engines: {node: '>=10.13.0'}
@@ -8084,3 +8207,7 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

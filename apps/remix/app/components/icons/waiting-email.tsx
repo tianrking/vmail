@@ -14,8 +14,8 @@ export function WaitingEmailLoader() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}>
-          <stop stop-color="#5C5C5C" />
-          <stop offset="1" stop-color="#0F1015" />
+          <stop stopColor="#5C5C5C" />
+          <stop offset="1" stopColor="#0F1015" />
         </linearGradient>
         <radialGradient
           id="r6"
@@ -24,8 +24,8 @@ export function WaitingEmailLoader() {
           r="1"
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256) rotate(90) scale(512)">
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
       </defs>
       <rect

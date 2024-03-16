@@ -4,6 +4,7 @@ import { getEmail } from "database/dao";
 import { getWebTursoDB } from "database/db";
 import { format } from "date-fns/format";
 import { ArrowUturnLeft, UserCircleIcon } from "icons";
+import { useTranslation } from "react-i18next";
 
 export const meta: MetaFunction = () => {
   return [
@@ -33,6 +34,8 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function MailViewer() {
+  const { t } = useTranslation();
+
   const mail = useLoaderData<typeof loader>();
   return (
     <div className="mt-28 mx-6 md:mx-10 flex flex-1 flex-col p-2 gap-10 text-white">
@@ -40,7 +43,7 @@ export default function MailViewer() {
         to="/"
         className="flex w-fit font-semibold items-center border p-2 rounded-md gap-2">
         <ArrowUturnLeft />
-        Back Home
+        {t("Back Home")}
       </Link>
       <div className="flex items-start">
         <div className="flex items-start gap-4 text-sm">

@@ -23,6 +23,8 @@ import Cloudflare from "~/components/icons/Cloudflare";
 import Clock from "~/components/icons/Clock";
 import Info from "~/components/icons/Info";
 
+import { useTranslation } from "react-i18next";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Vmail - Virtual Temporary Email" },
@@ -118,35 +120,39 @@ export default function Index() {
 
   const navigation = useNavigation();
 
+  const { t } = useTranslation();
+
   return (
     <div className="h-full flex flex-col gap-4 md:flex-row justify-center items-start mt-28 mx-6 md:mx-10">
       <div className="flex flex-col text-white items-start w-full md:w-[350px] mx-auto gap-2">
         <div className="w-full mb-6 md:max-w-[350px] group group-hover:before:duration-500 group-hover:after:duration-500 after:duration-500 hover:border-cyan-600 hover:before:[box-shadow:_20px_20px_20px_30px_#a21caf] duration-500 before:duration-500 hover:duration-500 hover:after:-right-8 hover:before:right-12 hover:before:-bottom-8 hover:before:blur origin-left hover:decoration-2 relative bg-neutral-800 h-full border text-left p-4 rounded-lg overflow-hidden border-cyan-50/20 before:absolute before:w-12 before:h-12 before:content[''] before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg  after:absolute after:z-10 after:w-20 after:h-20 after:content['']  after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg">
           <h1 className="text-gray-50 text-xl font-bold mb-7 group-hover:text-cyan-500 duration-500">
-            Virtual Temporary Email
+            {t("Virtual Temporary Email")}
           </h1>
           <div className="flex flex-col gap-4 text-sm text-gray-200">
             <div className="flex items-center gap-1.5">
-              <ShieldCheck /> Privacy friendly
+              <ShieldCheck /> {t("Privacy friendly")}
             </div>
             <div className="flex items-center gap-1.5">
               <Clock />
-              Valid for 1 Day
+              {t("Valid for 1 Day")}
             </div>
             <div className="flex items-center gap-1.5">
               <Info />
-              AD friendly
+              {t("AD friendly")}
             </div>
             <div className="flex items-center gap-2">
               <Cloudflare />
-              100% Run on Cloudflare
+              {t("100% Run on Cloudflare")}
             </div>
           </div>
         </div>
 
         {loaderData?.userMailbox && (
           <Form method="POST" className="w-full md:max-w-[350px] mb-4">
-            <div className="mb-4 font-semibold text-sm">Email address</div>
+            <div className="mb-4 font-semibold text-sm">
+              {t("Email address")}
+            </div>
             <div className="flex items-center mb-6 text-zinc-100 bg-white/10 backdrop-blur-xl shadow-inner px-4 py-4 rounded-md w-full">
               <span className="truncate">{loaderData.userMailbox}</span>
               <CopyButton
@@ -157,7 +163,7 @@ export default function Index() {
             <button
               type="submit"
               className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
-              Stop
+              {t("Stop")}
             </button>
           </Form>
         )}
@@ -165,7 +171,7 @@ export default function Index() {
         {!loaderData?.userMailbox && (
           <Form method="POST" className="w-full md:max-w-[350px]">
             <div className="text-sm relative mb-6">
-              <div className="mb-4 font-semibold">Validater</div>
+              <div className="mb-4 font-semibold">{t("Validater")}</div>
               <div className="[&amp;_iframe]:!w-full h-[65px] max-w-[300px] bg-gray-700">
                 <Turnstile
                   className="z-10 border-none"
@@ -180,13 +186,13 @@ export default function Index() {
               type="submit"
               disabled={navigation.state != "idle"}
               className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
-              Create temporary email
+              {t("Create temporary email")}
             </button>
           </Form>
         )}
         <div>
           {actionData?.error && (
-            <div className="text-red-500">{actionData.error}</div>
+            <div className="text-red-500">{t(actionData.error)}</div>
           )}
         </div>
       </div>
