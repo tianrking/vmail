@@ -68,7 +68,7 @@ export function MailList(props: { mails: Email[] }) {
         <div className="w-full rounded-t-md p-2 flex items-center bg-zinc-800 text-zinc-200 gap-2">
           <MailIcon className="size-6" />
           <div className="flex items-center font-bold text-lg font-mono">
-            INBOX
+            {t("INBOX")}
             <span className="ml-1 text-base">
               {data.length > 0 && <span>({data.length})</span>}
             </span>
