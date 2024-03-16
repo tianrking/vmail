@@ -19,11 +19,21 @@ export default function CopyButton(props: CopyButtonProps) {
   };
 
   function copy() {
-    navigator.clipboard
-      .writeText(props.content)
-      .then(() => setStatus("success"))
-      .catch(() => setStatus("error"))
-      .finally(() => setTimeout(() => setStatus("idle"), 1000));
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(props.content)
+        .then(() => setStatus("success"))
+        .catch(() => setStatus("error"))
+        .finally(() => setTimeout(() => setStatus("idle"), 1000));
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = props.content;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
   }
 
   return (
