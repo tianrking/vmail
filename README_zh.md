@@ -103,6 +103,8 @@ pnpm install
 
 ```bash
 cd apps/email-worker
+
+# 需要node环境
 pnpm run deploy
 ```
 
@@ -122,7 +124,15 @@ pnpm run deploy
 - TURSO_DB_RO_AUTH_TOKEN（从turso获取数据库凭据）
 - TURSO_DB_URL
 
-部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了。
+⚠️ 记得全局搜索代码中的 `vmail.dev`，替换成你准备的域名。
+
+5.**部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
+
+这里用 vercel 演示：
+
+![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
+
+![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
 
 以上，完成！
 

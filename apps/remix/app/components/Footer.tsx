@@ -18,6 +18,13 @@ export default function Footer() {
       </a>
       <div className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
         <Link
+          to="https://huawei.com.tw"
+          target="_blank"
+          title="Google Earth"
+          className="text-gray-400 hover:text-gray-500  scale-[1.2]">
+          🌍
+        </Link>
+        <Link
           to="mailto:team@inke.app"
           title="Email"
           className="text-gray-400 hover:text-gray-500">

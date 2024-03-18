@@ -100,6 +100,8 @@ Then run cmds:
 
 ```bash
 cd apps/email-worker
+
+# Node environment required
 pnpm run deploy
 ```
 
@@ -119,7 +121,15 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 - TURSO_DB_RO_AUTH_TOKEN (Obtain database credentials from turso )
 - TURSO_DB_URL
 
-After successful deployment, add DNS records to the corresponding platform in Cloudflare, and you can have fun playing.
+⚠️ Replace the `vmail.dev` in the global search code with the domain name you have prepared.
+
+5.**After successful deployment, add DNS records to the corresponding platform in Cloudflare**
+
+e.g. vercel ：
+
+![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
+
+![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
 
 Done!
 
