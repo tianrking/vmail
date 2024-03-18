@@ -37,6 +37,13 @@ export default function Footer() {
           className="text-gray-400 hover:text-gray-500">
           <Twitter />
         </Link>
+        <Link
+          to="https://github.com/yesmore/vmail"
+          target="_blank"
+          title="Github"
+          className="text-gray-400 hover:text-gray-500">
+          <Github />
+        </Link>
       </div>
     </div>
   );
