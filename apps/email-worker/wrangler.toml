@@ -9,8 +9,8 @@ TURSO_DB_URL = ""
 
 # [[d1_databases]]
 # binding = "DB"
-# database_name = "vmail"
-# database_id = "34d217cb-b549-422b-8697-3a361a140222"
+# database_name = ""
+# database_id = ""
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Note: Use secrets to store sensitive data.
