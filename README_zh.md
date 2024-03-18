@@ -24,7 +24,7 @@ demo：https://vmail.dev
 
 ### 步骤
 
-1.**注册一个 [turso](https://turso.tech) 账户，创建数据库，并创建一个`emails`表**
+**1.注册一个 [turso](https://turso.tech) 账户，创建数据库，并创建一个`emails`表**
 
 注册后，系统会提示您创建一个数据库。在这里我将其命名为 `vmail`，
 
@@ -81,7 +81,7 @@ CREATE TABLE `emails` (
 );
 ```
 
-2.**部署 email worker**
+**2.部署 email worker**
 
 ```bash
 git clone https://github.com/yesmore/vmail
@@ -109,13 +109,13 @@ cd apps/email-worker
 pnpm run deploy
 ```
 
-3.**配置电子邮件路由规则**
+**3.配置电子邮件路由规则**
 
 设置“Catch-all”动作为发送到emial worker。
 
 ![](https://img.inke.app/file/fa39163411cd35fad0a7f.png) 
 
-4.**在 Vercel 或 fly.io 上部署 Remix 应用程序**
+**4.在 Vercel 或 fly.io 上部署 Remix 应用程序**
 
 确保在部署期间准备并填写以下环境变量（`.env.example`）：
 
@@ -126,7 +126,7 @@ pnpm run deploy
 - TURSO_DB_URL
 - EMAIL_DOMAIN (e.g. vmail.dev)
   
-5.**部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
+**5.部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
 
 这里用 vercel 演示：
 

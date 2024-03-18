@@ -26,7 +26,7 @@ demo: https://vmail.dev
 
 ### Steps
 
-1.**Register a [turso](https://turso.tech) account, create a database, and create an emails table**
+**1.Register a [turso](https://turso.tech) account, create a database, and create an emails table**
 
 After registration, you will be prompted to create a database. I named it `vmail` here,
 
@@ -78,7 +78,7 @@ CREATE TABLE `emails` (
 );
 ```
 
-2.**Deploy email workers**
+**2.Deploy email workers**
 
 ```bash
 git clone https://github.com/yesmore/vmail
@@ -106,13 +106,13 @@ cd apps/email-worker
 pnpm run deploy
 ```
 
-3.**Configure email routing rules**
+**3.Configure email routing rules**
 
 Set `Catch-all` action to Send to Worker
 
 ![](https://img.inke.app/file/fa39163411cd35fad0a7f.png)
 
-4.**Deploy Remix app on Vercel or fly.io**
+**4.Deploy Remix app on Vercel or fly.io**
 
 Ensure that the following environment variables (`.env.example`) are prepared and filled in during deployment:
 
@@ -123,7 +123,7 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 - TURSO_DB_URL
 - EMAIL_DOMAIN (e.g. vmail.dev)
 
-5.**After successful deployment, add DNS records to the corresponding platform in Cloudflare**
+**5.Add DNS records to the corresponding platform in Cloudflare**
 
 e.g. vercel ：
 
