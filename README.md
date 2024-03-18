@@ -93,6 +93,7 @@ Fill in the necessary environment variables in `vmail/apps/email-worker/wrangler
 
 - TURSO_DB_AUTH_TOKEN (turso table info from step 1，click `Generate Token`)
 - TURSO_DB_URL (e.g. libsql://db-name.turso.io)
+- EMAIL_DOMAIN (e.g. vmail.dev)
 
 > If you don't do this step, you can add environment variables in the worker settings of Cloudflare
 
@@ -120,8 +121,7 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 - TURNSTILE_SECRET
 - TURSO_DB_RO_AUTH_TOKEN (Obtain database credentials from turso )
 - TURSO_DB_URL
-
-⚠️ Replace the `vmail.dev` in the global search code with the domain name you have prepared.
+- EMAIL_DOMAIN (e.g. vmail.dev)
 
 5.**After successful deployment, add DNS records to the corresponding platform in Cloudflare**
 

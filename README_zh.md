@@ -96,7 +96,8 @@ pnpm install
 
 - TURSO_DB_AUTH_TOKEN（第1步中的turso表信息，点击“Generate Token”）
 - TURSO_DB_URL（例如 libsql://db-name.turso.io）
-
+- EMAIL_DOMAIN (域名，如 vmail.dev)
+  
 > 如果您不执行此步骤，可以在Cloudflare的 worker settings 中添加环境变量
 
 然后运行命令：
@@ -123,9 +124,8 @@ pnpm run deploy
 - TURNSTILE_SECRET
 - TURSO_DB_RO_AUTH_TOKEN（从turso获取数据库凭据）
 - TURSO_DB_URL
-
-⚠️ 记得全局搜索代码中的 `vmail.dev`，替换成你准备的域名。
-
+- EMAIL_DOMAIN (e.g. vmail.dev)
+  
 5.**部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
 
 这里用 vercel 演示：

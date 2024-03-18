@@ -11,6 +11,7 @@ type Bindings = {
   TURSO_DB_RO_AUTH_TOKEN: string;
   JWT_SECRET: string;
   TURNSTILE_SECRET: string;
+  EMAIL_DOMAIN: string;
 };
 
 type Variables = {
@@ -80,7 +81,7 @@ async function withTurnstile(c: Context, next: Next) {
 app.post("/mailbox", withTurnstile, async (c) => {
   const jwtSecret = new TextEncoder().encode(c.env.JWT_SECRET);
   const name = randomName("", ".");
-  const domain = "vmail.dev";
+  const domain = c.env.EMAIL_DOMAIN || "";
   const mailbox = `${name}@${domain}`;
   const token = await new jose.SignJWT({ mailbox })
     .setProtectedHeader({ alg: "HS256" })
