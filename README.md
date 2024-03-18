@@ -122,3 +122,16 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 After successful deployment, add DNS records to the corresponding platform in Cloudflare, and you can have fun playing.
 
 Done!
+
+## Inspired 
+
+- smail.pw
+- email.ml
+
+## License
+
+GNU General Public License v3.0
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yesmore/vmail&type=Date)](https://star-history.com/#yesmore/vmail&Date)

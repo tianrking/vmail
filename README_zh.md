@@ -125,3 +125,16 @@ pnpm run deploy
 部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了。
 
 以上，完成！
+
+## Inspired 
+
+- smail.pw
+- email.ml
+
+## License
+
+GNU General Public License v3.0
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yesmore/vmail&type=Date)](https://star-history.com/#yesmore/vmail&Date)
