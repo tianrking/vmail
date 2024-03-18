@@ -1,4 +1,4 @@
-## Vmail
+## VMAIL.DEV
 
 [中文文档](/README_zh.md)
 
@@ -21,7 +21,7 @@ demo: https://vmail.dev
 ### Requirements
 
 - [Cloudflare](https://dash.cloudflare.com/) account (Email service)
-- Domain mame hosted on Cloudflare
+- Domain name hosted on Cloudflare
 - [turso](https://turso.tech) sqlite (a free plan available for personal use)
 
 ### Steps
@@ -40,7 +40,7 @@ Then, Create a table named `emails`. Select your database, you will see the "Edi
 
 Cli documents: https://docs.turso.tech/cli/introduction
 
-For Linux:
+For Linux (or mac/windows):
 
 ```bash
 # Install (Remember to restart the terminal after installation)
@@ -123,11 +123,6 @@ After successful deployment, add DNS records to the corresponding platform in Cl
 
 Done!
 
-## Inspired 
-
-- smail.pw
-- email.ml
-
 ## License
 
 GNU General Public License v3.0
@@ -135,3 +130,5 @@ GNU General Public License v3.0
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=yesmore/vmail&type=Date)](https://star-history.com/#yesmore/vmail&Date)
+
+Inspired by smail.pw & email.ml

@@ -19,7 +19,7 @@ demo：https://vmail.dev
 ### 准备工作
 
 - [Cloudflare](https://dash.cloudflare.com/) 账户（email worker）
-- 托管在Cloudflare上的域名
+- 托管在 Cloudflare 上的域名
 - [turso](https://turso.tech) sqlite（个人免费计划足够）
 
 ### 步骤
@@ -40,7 +40,7 @@ demo：https://vmail.dev
 
 Cli文档：https://docs.turso.tech/cli/introduction 
 
-Linux 终端执行：
+Linux (或 mac/windows) 终端执行：
 
 ```bash
 # 安装（安装后记得重启终端生效）
@@ -126,11 +126,6 @@ pnpm run deploy
 
 以上，完成！
 
-## Inspired 
-
-- smail.pw
-- email.ml
-
 ## License
 
 GNU General Public License v3.0
@@ -138,3 +133,5 @@ GNU General Public License v3.0
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=yesmore/vmail&type=Date)](https://star-history.com/#yesmore/vmail&Date)
+
+Inspired by smail.pw & email.ml
