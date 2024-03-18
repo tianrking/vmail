@@ -36,7 +36,7 @@ export function MailItem({ mail: item }: { mail: Email }) {
         </div>
         <div className="text-xs font-medium">{item.subject}</div>
       </div>
-      <div className="line-clamp-2 text-xs text-zinc-300 font-normal">
+      <div className="line-clamp-2 text-xs text-zinc-300 font-normal w-full">
         {item.text || item.html || "".substring(0, 300)}
       </div>
     </Link>
