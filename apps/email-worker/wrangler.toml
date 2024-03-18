@@ -3,8 +3,8 @@ main = "src/index.ts"
 compatibility_date = "2023-12-18"
 
 [vars]
-TURSO_DB_AUTH_TOKEN = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MTA0MTczNTksImlkIjoiYWNhYjYxZTktNjdiMC00MTRmLWJjZGUtZmI2OTVjZjI1ODBkIn0.GVHDau93esya42S04s-PF78n1jOkBQSpjhyn_I4ICkkhWfTJDyDn9CLiWMBUy35Xdbon6IJDSwmq52VMTmdOCw"
-TURSO_DB_URL = "libsql://vmail-yesmore.turso.io"
+TURSO_DB_AUTH_TOKEN = ""
+TURSO_DB_URL = ""
 
 
 # [[d1_databases]]
