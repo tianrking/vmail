@@ -133,6 +133,22 @@ e.g. vercel ：
 
 Done!
 
+## Community Group
+
+- 加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
+- Discord: https://discord.gg/d68kWCBDEs
+
+<table>
+  <tr>
+    <td>
+      <img src="https://img.inke.app/file/4bc1cb6681c3e5ff75150.jpg"/>
+    </td>
+    <td>
+      <img src="https://img.inke.app/file/711501f1ee488b3423aff.jpg"/>
+    </td>
+  </tr>
+</table>
+
 ## License
 
 GNU General Public License v3.0
