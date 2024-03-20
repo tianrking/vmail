@@ -23,6 +23,7 @@ demo: https://vmail.dev
 - [Cloudflare](https://dash.cloudflare.com/) account (Email service)
 - Domain name hosted on Cloudflare
 - [turso](https://turso.tech) sqlite (a free plan available for personal use)
+- [Vercel](https://vercel.com) or [fly.io](https://fly.io) to deploy Remix app
 
 ### Steps
 
@@ -122,6 +123,11 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 - TURSO_DB_RO_AUTH_TOKEN (Obtain database credentials from turso )
 - TURSO_DB_URL
 - EMAIL_DOMAIN (e.g. vmail.dev)
+
+Vercel Project Settings (General):
+
+![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
+![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
 
 **5.Add DNS records to the corresponding platform in Cloudflare**
 

@@ -21,6 +21,7 @@ demo：https://vmail.dev
 - [Cloudflare](https://dash.cloudflare.com/) 账户（email worker）
 - 托管在 Cloudflare 上的域名
 - [turso](https://turso.tech) sqlite（个人免费计划足够）
+- [Vercel](https://vercel.com) 或 [fly.io](https://fly.io) 部署前端
 
 ### 步骤
 
@@ -125,6 +126,11 @@ pnpm run deploy
 - TURSO_DB_RO_AUTH_TOKEN（从turso获取数据库凭据）
 - TURSO_DB_URL
 - EMAIL_DOMAIN (e.g. vmail.dev)
+
+Vercel 面板项目设置 (General)：
+
+![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
+![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
   
 **5.部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
 
