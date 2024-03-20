@@ -10,9 +10,9 @@ Temporary email service build with email worker.
 
 > Worker receives email -> saves to database -> client queries email
 
-### Screenshot
+## Screenshot demo
 
-demo: https://vmail.dev
+Here: https://vmail.dev
 
 ![](https://vmail.dev/preview.png)
 
@@ -128,6 +128,16 @@ Vercel Project Settings (General):
 
 ![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
 ![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
+
+Local development：
+
+```bash
+cd path-to/vmail/ # root directory
+pnpm install
+
+# run on localhost:3000
+pnpm run remix:dev
+```
 
 **5.Add DNS records to the corresponding platform in Cloudflare**
 

@@ -8,9 +8,9 @@
 
 > worker接收电子邮件 -> 保存到数据库 -> 客户端查询电子邮件
 
-### 截图
+## 截图
 
-demo：https://vmail.dev
+Here：https://vmail.dev
 
 ![](https://vmail.dev/preview.png) 
 
@@ -131,6 +131,16 @@ Vercel 面板项目设置 (General)：
 
 ![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
 ![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
+
+本地运行：
+
+```bash
+cd path-to/vmail/ # 根路径
+pnpm install
+
+# 运行 localhost:3000
+pnpm run remix:dev
+```
   
 **5.部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
 
