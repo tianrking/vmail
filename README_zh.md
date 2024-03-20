@@ -1,4 +1,4 @@
-## Vmail
+# VMAIL.DEV
 
 使用 Cloudflare email worker 实现的临时电子邮件服务。
 

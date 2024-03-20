@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-query";
 import { Email } from "database";
 import { formatDistanceToNow } from "date-fns";
-import { InboxIcon, MailIcon } from "icons";
+import { MailIcon } from "icons";
 import Refresh from "./icons/Refresh";
 import Lock from "./icons/Lock";
 import Loader from "./icons/Loader";
@@ -110,7 +110,7 @@ export default function MailListWithQuery({ mails }: { mails: Email[] }) {
   );
 }
 
-// local test data
+// mock data
 // [
 //   {
 //     id: "aeCTc74ipMGDdbMHTlDiX",

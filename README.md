@@ -1,4 +1,4 @@
-## VMAIL.DEV
+# VMAIL.DEV
 
 [中文文档](/README_zh.md)
 
