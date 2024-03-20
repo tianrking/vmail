@@ -26,7 +26,7 @@ export default function Header() {
       </Link>
       <Link
         className="ml-3 md:ml-8 "
-        to="https://www.producthunt.com/products/vmail-2?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-vmail&#0045;2"
+        to="https://www.producthunt.com/posts/vmail-2"
         target="_blank">
         <Follow />
       </Link>
