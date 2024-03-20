@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { VmailLogo } from "./icons/vmail";
 import { useTranslation } from "react-i18next";
+import Follow from "./icons/Follow";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -13,16 +14,21 @@ export default function Header() {
         </button>
       </Link>
 
-      <Link to="/about" className="ml-auto text-sm md:text-base">
+      <Link
+        to="/about"
+        className="ml-auto text-sm md:text-base hidden md:block">
         {t("About")}
       </Link>
-      <Link to="/privacy" className="ml-3 md:ml-8 text-sm md:text-base">
+      <Link
+        to="/privacy"
+        className="ml-3 md:ml-8 text-sm md:text-base hidden md:block">
         {t("Privacy")}
       </Link>
-      <Link to="https://www.buymeacoffee.com/yesmore" target="_blank">
-        <button className="py-1.5 px-3 md:px-5 ml-3 md:ml-8 text-sm md:text-base rounded-md bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
-          {t("Donate")}
-        </button>
+      <Link
+        className="ml-3 md:ml-8 "
+        to="https://www.producthunt.com/products/vmail-2?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-vmail&#0045;2"
+        target="_blank">
+        <Follow />
       </Link>
     </div>
   );
