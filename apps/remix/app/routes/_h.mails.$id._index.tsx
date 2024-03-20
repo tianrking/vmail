@@ -67,7 +67,7 @@ export default function MailViewer() {
       <div className="flex-1 flex text-sm bg-[#ffffffd6] backdrop-blur-xl rounded-md p-3 min-h-0 overflow-y-auto">
         <article
           className="prose"
-          dangerouslySetInnerHTML={{ __html: mail.html || "" }}
+          dangerouslySetInnerHTML={{ __html: mail.html || mail.text || "" }}
         />
       </div>
     </div>
