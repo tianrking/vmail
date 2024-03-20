@@ -7,7 +7,7 @@ const secrets = (process.env.COOKIES_SECRET || "")
 // console.log("secrets", secrets);
 
 export const userMailboxCookie = createCookie("userMailbox", {
-  maxAge: 60 * 60 * 24 * 1,
+  maxAge: Number(process.env.EXPIRY_TIME) || 86400, // default for one day (86400 seconds)
   secrets: secrets,
   httpOnly: true,
 });

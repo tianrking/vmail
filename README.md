@@ -123,6 +123,7 @@ Ensure that the following environment variables (`.env.example`) are prepared an
 - TURSO_DB_RO_AUTH_TOKEN (Obtain database credentials from turso )
 - TURSO_DB_URL
 - EMAIL_DOMAIN (e.g. vmail.dev)
+- EXPIRY_TIME (optional, default `86400`)
 
 Vercel Project Settings (General):
 

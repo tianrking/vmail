@@ -125,7 +125,8 @@ pnpm run deploy
 - TURNSTILE_SECRET
 - TURSO_DB_RO_AUTH_TOKEN（从turso获取数据库凭据）
 - TURSO_DB_URL
-- EMAIL_DOMAIN (e.g. vmail.dev)
+- EMAIL_DOMAIN (域名后缀,如 `vmail.dev`)
+- EXPIRY_TIME (可选, 单位秒, 默认`86400`)  
 
 Vercel 面板项目设置 (General)：
 

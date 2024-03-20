@@ -110,6 +110,7 @@ export const action: ActionFunction = async ({ request }) => {
       error: "Email domain not set in .env",
     };
   }
+
   const mailbox = `${randomName("", ".")}@${domain}`;
   const userMailbox = await userMailboxCookie.serialize(mailbox);
   return redirect("/", {
