@@ -2,68 +2,73 @@
 
 # VMAIL.DEV
 
-[英文文档](/README.md) | [中文文档](/README_zh.md)
+[English](/README_en.md) | 中文文档
 
-Temporary email service build with email worker.
+使用 Cloudflare email worker 实现的临时电子邮件服务。
 
-## Features and Principles
+## 特点与基本原理
 
-- Privacy-friendly, no registration required, out-of-the-box
-- Better UI design, more concise
-- 100% open source, quick deployment, no server required
+- 隐私友好，无需注册，开箱即用
+- 更好的 UI 设计，更加简洁
+- 100% 开源，快速部署，无需服务器
 
-Principles： 
+原理：
 
-- Receiving emails (email worker)
-- Display email (remix)
-- Mail Storage (sqlite)
+- 接收电子邮件（email worker）
+- 显示电子邮件（remix）
+- 邮件存储（sqlite）
 
-> Worker receives email -> saves to database -> client queries email
+> worker接收电子邮件 -> 保存到数据库 -> 客户端查询电子邮件
 
-### Screenshot demo
+### 网站截图
 
-Here: https://vmail.dev
+https://vmail.dev
 
-![](https://vmail.dev/preview.png)
+![](https://vmail.dev/preview.png) 
 
-## Self-hosted Tutorial
+## 自部署教程
 
-### Requirements
+### 准备工作
 
-- [Cloudflare](https://dash.cloudflare.com/) account (Email service)
-- Domain name hosted on Cloudflare
-- [turso](https://turso.tech) sqlite (a free plan available for personal use)
-- [Vercel](https://vercel.com) or [fly.io](https://fly.io) to deploy Remix app
+- [Cloudflare](https://dash.cloudflare.com/) 账户（email worker）
+- 托管在 Cloudflare 上的域名
+- [turso](https://turso.tech) sqlite（个人免费计划足够）
+- [Vercel](https://vercel.com) 或 [fly.io](https://fly.io) 账号部署前端用户界面
 
-### Steps
+### 步骤
 
-**1.Register a [turso](https://turso.tech) account, create a database, and create an emails table**
+**1.注册一个 [turso](https://turso.tech) 账户，创建数据库，并创建一个`emails`表**
 
-After registration, you will be prompted to create a database. I named it `vmail` here,
+注册后，系统会提示您创建一个数据库。在这里我将其命名为 `vmail`，
 
-![](https://img.inke.app/file/3773b481c78c9087140b1.png)
+![](https://img.inke.app/file/3773b481c78c9087140b1.png) 
 
-Then, Create a table named `emails`. Select your database, you will see the "Edit Tables" button, click and enter.
+然后，创建一个名为 `emails` 的表。
 
-![](https://img.inke.app/file/d49086f9b450edd5a2cef.png)
+选择您的数据库，您会看到“编辑表”按钮，点击并进入:
 
-> ⚠️ Note: **There is a plus button in the upper left corner, and I tried to click it without any prompts or effects, so I used the cli provided by turso to initialize the table.**
+![](https://img.inke.app/file/d49086f9b450edd5a2cef.png) 
 
-Cli documents: https://docs.turso.tech/cli/introduction
+> ⚠️ 注意：**左上角有一个加号按钮，我尝试点击它没有任何提示或效果，所以我使用了 turso 提供的 cli 来初始化表。**
 
-For Linux (or mac/windows):
+Cli文档：https://docs.turso.tech/cli/introduction 
+
+Linux (或 mac/windows) 终端执行：
 
 ```bash
-# Install (Remember to restart the terminal after installation)
+# 安装（安装后记得重启终端生效）
 curl -sSfL https://get.tur.so/install.sh | bash
 
-# Authenticate
+# 登录账户
 turso auth login
 
-# Connect to your Turso database
+# 连接到您的Turso数据库
 turso db shell <database-name>
+```
 
-# Copy sql script to run on the terminal (packages/database/drizzle/0000_sturdy_arclight.sql)
+将sql脚本复制到终端运行（packages/database/drizzle/0000_sturdy_arclight.sql）：
+
+```sql
 CREATE TABLE `emails` (
  `id` text PRIMARY KEY NOT NULL,
  `message_from` text NOT NULL,
@@ -89,93 +94,93 @@ CREATE TABLE `emails` (
 );
 ```
 
-**2.Deploy email workers**
+**2.部署 email worker**
 
 ```bash
 git clone https://github.com/yesmore/vmail
 
 cd vmail
 
-# Install dependencies
+# 安装依赖
 pnpm install
 ```
 
-Fill in the necessary environment variables in `vmail/apps/email-worker/wrangler.toml` file.
+在 `vmail/apps/email-worker/wrangler.toml` 文件中填写必要的环境变量。
 
-- TURSO_DB_AUTH_TOKEN (turso table info from step 1，click `Generate Token`)
-- TURSO_DB_URL (e.g. libsql://db-name.turso.io)
-- EMAIL_DOMAIN (e.g. vmail.dev)
+- TURSO_DB_AUTH_TOKEN（第1步中的turso表信息，点击“Generate Token”）
+- TURSO_DB_URL（例如 libsql://db-name.turso.io）
+- EMAIL_DOMAIN (域名，如 vmail.dev)
+  
+> 如果您不执行此步骤，可以在Cloudflare的 worker settings 中添加环境变量
 
-> If you don't do this step, you can add environment variables in the worker settings of Cloudflare
-
-Then run cmds:
+然后运行命令：
 
 ```bash
 cd apps/email-worker
 
-# Node environment required, and your need to install wrangler cli and login first, see https://developers.cloudflare.com/workers/wrangler/install-and-update
+# 需要 Node 环境，并且需要安装 wrangler cli 并在本地登录，参考 https://developers.cloudflare.com/workers/wrangler/install-and-update
 pnpm run deploy
 ```
 
-**3.Configure email routing rules**
+**3.配置电子邮件路由规则**
 
-Set `Catch-all` action to Send to Worker
+设置“Catch-all”操作为发送到 email worker：
 
-![](https://img.inke.app/file/fa39163411cd35fad0a7f.png)
+![](https://img.inke.app/file/fa39163411cd35fad0a7f.png) 
 
-**4.Deploy Remix app on Vercel or fly.io**
+**4.在 Vercel 或 fly.io 上部署 Remix 应用程序**
 
-Ensure that the following environment variables (`.env.example`) are prepared and filled in during deployment:
+确保在部署期间准备并填写以下环境变量（`.env.example`）：
 
-| Variable               | Description                                                        | example                                |
-| ---------------------- | ------------------------------------------------------------------ | -------------------------------------- |
-| COOKIES_SECRET         | The encryption secret of the cookie, a random string is sufficient | `s3cr3t`                               |
-| TURNSTILE_KEY          | Obtained from Cloudflare for website verification                  | `1234567890`                           |
-| TURNSTILE_SECRET       | Obtained from Cloudflare for website verification                  | `s3cr3t`                               |
-| TURSO_DB_RO_AUTH_TOKEN | Obtain database credentials from turso                             | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9` |
-| TURSO_DB_URL           | Obtain database credentials from turso                             | `libsql://db-name.turso.io`            |
-| EMAIL_DOMAIN           | email domain                                                       | `vmail.dev`                            |
-| EXPIRY_TIME            | optional, default `86400`                                          | `86400`                                |
+| 变量名                 | 说明                                 | 示例                        |
+| ---------------------- | ------------------------------------ | --------------------------- |
+| COOKIES_SECRET         | 必填，cookie加密密钥                 | `my-secret-key`             |
+| TURNSTILE_KEY          | 必填，网站验证所需的Turnstile Key    | `my-turnstile-key`          |
+| TURNSTILE_SECRET       | 必填，网站验证所需的Turnstile Secret | `my-turnstile-secret`       |
+| TURSO_DB_RO_AUTH_TOKEN | 必填，turso数据库只读凭据            | `my-turso-db-ro-auth-token` |
+| TURSO_DB_URL           | 必填，turso数据库URL                 | `libsql://db-name.turso.io` |
+| EMAIL_DOMAIN           | 必填，域名后缀                       | `vmail.dev`                 |
+| EXPIRY_TIME            | 可选，过期时间，单位秒，默认86400    | `86400`                     |
 
-**For Vercel:**
+**Vercel:** 
 
-Then push the code to your Github repository and create a new project in Vercel. Choose `New project`, then import the corresponding Github repository, fill in the environment variables, select the `Remix` framework, and click `Deploy`. Wait for the deployment to complete.
+然后将代码推送到你的 Github 仓库，并在 Vercel 面板中创建项目。选择 `New project`，然后导入对应的 Github 仓库，填写环境变量，选择 `Remix` 框架，点击 `Deploy`，等待部署完成。
 
-Vercel Project Settings (General):
+一些 Vercel 面板项目设置 (General)：
 
 ![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
 ![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
 
-**For fly.io:** 
+**fly.io:** 
 
 ```bash
 cd vmail/apps/remix 
 fly launch
 ```
+  
+**5.部署成功后在 cloudflare 添加域名解析(A记录)到对应平台，就可以愉快的玩耍了**
 
-**5.Add DNS records (A record) to the corresponding platform in Cloudflare**
-
-e.g. vercel：
+vercel 演示如何解析：
 
 ![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
 
 ![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
 
-Done!
+以上，完成！
 
-## Local development
+## 本地运行调试
 
-copy `apps/remix/.env.example` to `apps/remix/.env` and fill in the necessary environment variables.
+复制 `apps/remix/.env.example` 到 `apps/remix/.env` 并填写必要的环境变量。
 
 ```bash
-cd path-to/vmail/ # root directory
+cd path-to/vmail/ # 根路径
 pnpm install
 
-# run on localhost:3000
+# 运行 localhost:3000
 pnpm run remix:dev
 ```
 
-## Community Group
+## 交流群
 
 - 扫码或加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
 - Discord: https://discord.gg/d68kWCBDEs
