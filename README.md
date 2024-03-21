@@ -1,8 +1,18 @@
+![cover](https://img.inke.app/file/beb0212f96c6cd37eaeb8.jpg)
+
 # VMAIL.DEV
 
-[中文文档](/README_zh.md)
+[英文文档](/README.md) | [中文文档](/README_zh.md)
 
 Temporary email service build with email worker.
+
+## Features and Principles
+
+- Privacy-friendly, no registration required, out-of-the-box
+- Better UI design, more concise
+- 100% open source, quick deployment, no server required
+
+Principles： 
 
 - Receiving emails (email worker)
 - Display email (remix)
@@ -10,13 +20,13 @@ Temporary email service build with email worker.
 
 > Worker receives email -> saves to database -> client queries email
 
-## Screenshot demo
+### Screenshot demo
 
 Here: https://vmail.dev
 
 ![](https://vmail.dev/preview.png)
 
-## Self-hosted 
+## Self-hosted Tutorial
 
 ### Requirements
 
@@ -103,7 +113,7 @@ Then run cmds:
 ```bash
 cd apps/email-worker
 
-# Node environment required
+# Node environment required, and your need to install wrangler cli and login first, see https://developers.cloudflare.com/workers/wrangler/install-and-update
 pnpm run deploy
 ```
 
@@ -117,20 +127,45 @@ Set `Catch-all` action to Send to Worker
 
 Ensure that the following environment variables (`.env.example`) are prepared and filled in during deployment:
 
-- COOKIES_SECRET (The encryption secret of the cookie, a random string is sufficient)
-- TURNSTILE_KEY (Obtained from Cloudflare for website verification)
-- TURNSTILE_SECRET
-- TURSO_DB_RO_AUTH_TOKEN (Obtain database credentials from turso )
-- TURSO_DB_URL
-- EMAIL_DOMAIN (e.g. vmail.dev)
-- EXPIRY_TIME (optional, default `86400`)
+| Variable               | Description                                                        | example                                |
+| ---------------------- | ------------------------------------------------------------------ | -------------------------------------- |
+| COOKIES_SECRET         | The encryption secret of the cookie, a random string is sufficient | `s3cr3t`                               |
+| TURNSTILE_KEY          | Obtained from Cloudflare for website verification                  | `1234567890`                           |
+| TURNSTILE_SECRET       | Obtained from Cloudflare for website verification                  | `s3cr3t`                               |
+| TURSO_DB_RO_AUTH_TOKEN | Obtain database credentials from turso                             | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9` |
+| TURSO_DB_URL           | Obtain database credentials from turso                             | `libsql://db-name.turso.io`            |
+| EMAIL_DOMAIN           | email domain                                                       | `vmail.dev`                            |
+| EXPIRY_TIME            | optional, default `86400`                                          | `86400`                                |
+
+**For Vercel:**
+
+Then push the code to your Github repository and create a new project in Vercel. Choose `New project`, then import the corresponding Github repository, fill in the environment variables, select the `Remix` framework, and click `Deploy`. Wait for the deployment to complete.
 
 Vercel Project Settings (General):
 
 ![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
 ![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
 
-Local development：
+**For fly.io:** 
+
+```bash
+cd vmail/apps/remix 
+fly launch
+```
+
+**5.Add DNS records (A record) to the corresponding platform in Cloudflare**
+
+e.g. vercel：
+
+![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
+
+![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
+
+Done!
+
+## Local development
+
+copy `apps/remix/.env.example` to `apps/remix/.env` and fill in the necessary environment variables.
 
 ```bash
 cd path-to/vmail/ # root directory
@@ -140,19 +175,9 @@ pnpm install
 pnpm run remix:dev
 ```
 
-**5.Add DNS records to the corresponding platform in Cloudflare**
-
-e.g. vercel ：
-
-![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
-
-![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
-
-Done!
-
 ## Community Group
 
-- 加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
+- 扫码或加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
 - Discord: https://discord.gg/d68kWCBDEs
 
 <table>

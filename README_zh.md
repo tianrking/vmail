@@ -1,6 +1,18 @@
+![cover](https://img.inke.app/file/beb0212f96c6cd37eaeb8.jpg)
+
 # VMAIL.DEV
 
+[英文文档](/README.md) | [中文文档](/README_zh.md)
+
 使用 Cloudflare email worker 实现的临时电子邮件服务。
+
+## 特点与基本原理
+
+- 隐私友好，无需注册，开箱即用
+- 更好的 UI 设计，更加简洁
+- 100% 开源，快速部署，无需服务器
+
+原理：
 
 - 接收电子邮件（email worker）
 - 显示电子邮件（remix）
@@ -8,20 +20,20 @@
 
 > worker接收电子邮件 -> 保存到数据库 -> 客户端查询电子邮件
 
-## 截图
+### 网站截图
 
-Here：https://vmail.dev
+https://vmail.dev
 
 ![](https://vmail.dev/preview.png) 
 
-## 自托管
+## 自部署教程
 
 ### 准备工作
 
 - [Cloudflare](https://dash.cloudflare.com/) 账户（email worker）
 - 托管在 Cloudflare 上的域名
 - [turso](https://turso.tech) sqlite（个人免费计划足够）
-- [Vercel](https://vercel.com) 或 [fly.io](https://fly.io) 部署前端
+- [Vercel](https://vercel.com) 或 [fly.io](https://fly.io) 账号部署前端用户界面
 
 ### 步骤
 
@@ -106,13 +118,13 @@ pnpm install
 ```bash
 cd apps/email-worker
 
-# 需要node环境
+# 需要 Node 环境，并且需要安装 wrangler cli 并在本地登录，参考 https://developers.cloudflare.com/workers/wrangler/install-and-update
 pnpm run deploy
 ```
 
 **3.配置电子邮件路由规则**
 
-设置“Catch-all”动作为发送到emial worker。
+设置“Catch-all”操作为发送到 email worker：
 
 ![](https://img.inke.app/file/fa39163411cd35fad0a7f.png) 
 
@@ -120,20 +132,45 @@ pnpm run deploy
 
 确保在部署期间准备并填写以下环境变量（`.env.example`）：
 
-- COOKIES_SECRET（cookie的加密密钥，一个随机字符串即可）
-- TURNSTILE_KEY（从Cloudflare获取，用于网站验证）
-- TURNSTILE_SECRET
-- TURSO_DB_RO_AUTH_TOKEN（从turso获取数据库凭据）
-- TURSO_DB_URL
-- EMAIL_DOMAIN (域名后缀,如 `vmail.dev`)
-- EXPIRY_TIME (可选, 单位秒, 默认`86400`)  
+| 变量名                 | 说明                                 | 示例                        |
+| ---------------------- | ------------------------------------ | --------------------------- |
+| COOKIES_SECRET         | 必填，cookie加密密钥                 | `my-secret-key`             |
+| TURNSTILE_KEY          | 必填，网站验证所需的Turnstile Key    | `my-turnstile-key`          |
+| TURNSTILE_SECRET       | 必填，网站验证所需的Turnstile Secret | `my-turnstile-secret`       |
+| TURSO_DB_RO_AUTH_TOKEN | 必填，turso数据库只读凭据            | `my-turso-db-ro-auth-token` |
+| TURSO_DB_URL           | 必填，turso数据库URL                 | `libsql://db-name.turso.io` |
+| EMAIL_DOMAIN           | 必填，域名后缀                       | `vmail.dev`                 |
+| EXPIRY_TIME            | 可选，过期时间，单位秒，默认86400    | `86400`                     |
 
-Vercel 面板项目设置 (General)：
+**Vercel:** 
+
+然后将代码推送到你的 Github 仓库，并在 Vercel 面板中创建项目。选择 `New project`，然后导入对应的 Github 仓库，填写环境变量，选择 `Remix` 框架，点击 `Deploy`，等待部署完成。
+
+一些 Vercel 面板项目设置 (General)：
 
 ![](https://img.inke.app/file/573f842ccbefdf8daf319.png)
 ![](https://img.inke.app/file/36c1566d8c27735bb097d.png)
 
-本地运行：
+**fly.io:** 
+
+```bash
+cd vmail/apps/remix 
+fly launch
+```
+  
+**5.部署成功后在 cloudflare 添加域名解析(A记录)到对应平台，就可以愉快的玩耍了**
+
+vercel 演示如何解析：
+
+![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
+
+![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
+
+以上，完成！
+
+## 本地运行调试
+
+复制 `apps/remix/.env.example` 到 `apps/remix/.env` 并填写必要的环境变量。
 
 ```bash
 cd path-to/vmail/ # 根路径
@@ -142,20 +179,10 @@ pnpm install
 # 运行 localhost:3000
 pnpm run remix:dev
 ```
-  
-**5.部署成功后在 cloudflare 添加域名解析到对应平台，就可以愉快的玩耍了**
-
-这里用 vercel 演示：
-
-![](https://img.inke.app/file/245b71636cd16afcf93c7.png)
-
-![](https://img.inke.app/file/e10af19334fd6a13b7d2e.png)
-
-以上，完成！
 
 ## 交流群
 
-- 加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
+- 扫码或加微信 `yesmore_cc` 拉讨论群 (备注 vmail)
 - Discord: https://discord.gg/d68kWCBDEs
 
 <table>
